@@ -1,0 +1,14 @@
+<div id="search-component">
+  <input
+    #searchBox
+    id="search-box"
+    (input)="search(searchBox.value)"
+    placeholder="Search"
+  />
+
+  <ul class="ml-0">
+    <li *ngFor="let book of books$ | async">
+      <a routerLink="/book/{{ book._id }}">{{ book.name }}</a>
+    </li>
+  </ul>
+</div>

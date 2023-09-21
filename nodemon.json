@@ -1,0 +1,6 @@
+{
+  "env": {
+    "JWT_KEY": "secret_this_should_be_longer",
+    "SENDGRID_API_KEY": "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 - DALEY DESIGN. DELETE THIS END PIECE"
+  }
+}

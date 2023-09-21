@@ -1,0 +1,105 @@
+<div class="container mt-5">
+  <h1 *ngIf="mode === 'create'">Add A Book</h1>
+  <h1 *ngIf="mode === 'edit'">Edit Book</h1>
+  <form [formGroup]="form" (submit)="saveBook()">
+    <div class="row mb-3">
+      <div class="col-4">
+        <div class="form-group">
+          <label for="name">Book name</label>
+          <input
+            formControlName="name"
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Add Book Name"
+          />
+          <div *ngIf="form.get('name')?.invalid">Please enter a title</div>
+        </div>
+        <div class="form-group">
+          <label for="author">Book author</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="author"
+            id="author"
+            placeholder="Add Book Author"
+          />
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea
+            class="form-control"
+            formControlName="description"
+            id="description"
+            rows="3"
+          ></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="image" class="form-label">Cover Image</label>
+          <input
+            type="file"
+            class="form-control"
+            id="image"
+            (change)="onImagePicked($event)"
+          />
+        </div>
+        <div class="form-group mt-2"></div>
+        <div
+          class="img-preview"
+          *ngIf="
+            this.form.get('image')?.valid && imagePreview !== '' && imagePreview
+          "
+        >
+          <img
+            class="img-thumbnail mt-2"
+            [src]="imagePreview"
+            [alt]="form.value.name"
+          />
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="form-group">
+          <label for="availability">Availability</label>
+          <input
+            class="form-control"
+            type="number"
+            formControlName="availability"
+            name="availability"
+            id="availability"
+          />
+        </div>
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select
+            class="form-control"
+            formControlName="category"
+            id="category"
+            name="category"
+          >
+            <option value="{{ category }}" *ngFor="let category of categories">
+              {{ category }}
+            </option>
+            <option value="chess">Chess</option>
+            <option value="environment">Environment</option>
+            <option value="biology">Biology</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="type">Type</label>
+          <select
+            class="form-control"
+            formControlName="type"
+            id="type"
+            name="type"
+          >
+            <option value="ebook">eBook</option>
+            <option value="hardcopy">Hardcopy</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-success mt-3">
+          {{ mode | titlecase }} Book
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

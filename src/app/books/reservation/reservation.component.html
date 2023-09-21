@@ -1,0 +1,26 @@
+<table class="table mt-5" *ngIf="isAuthenticated">
+  <thead>
+    <tr>
+      <th scope="col">Borrower</th>
+      <th scope="col">Approval</th>
+      <th scope="col">Reserved</th>
+      <th scope="col">Return Date</th>
+      <th scope="col">Request Return</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let reservation of reservations">
+      <td>{{ reservation.reservedBy.name }}</td>
+      <td>
+        <select name="" id="">
+          <option value="{{ reservation.approvalStatus }}">Rejected</option>
+          <option value="{{ true }}">Approved</option>
+        </select>
+      </td>
+      <td>{{ reservation.reserveDate | date }}</td>
+      <td>{{ reservation.returnDate | date }}</td>
+
+      <td><button class="btn btn-warning">Return</button></td>
+    </tr>
+  </tbody>
+</table>

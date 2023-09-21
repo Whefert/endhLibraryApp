@@ -1,0 +1,67 @@
+<h3 class="mb-3">Reviews</h3>
+<div>
+  <div id="add_a_review" *ngIf="isAuthenticated">
+    <h5>Add a review</h5>
+    <form
+      action=""
+      class="mb-3"
+      #reviewForm="ngForm"
+      (ngSubmit)="addReview(reviewForm)"
+    >
+      <div class="form-floating">
+        <label for="comments" class="mb-2">Your comments</label>
+        <textarea
+          class="form-control pt-5 mb-2 pb-5"
+          rows="3"
+          placeholder="Leave a comment here"
+          id="comments"
+          ngModel
+          name="body"
+        ></textarea>
+      </div>
+      <label for="rating" class="form-label">Rating</label>
+      <input
+        type="range"
+        class="form-range"
+        min="0"
+        max="5"
+        step="1"
+        id="rating"
+        value="3"
+        ngModel
+        name="rating"
+      />
+      <button
+        type="submit"
+        [disabled]="!reviewForm.form.valid"
+        class="btn btn-success"
+      >
+        Add Review
+      </button>
+    </form>
+  </div>
+  <div class="border border-1">
+    <div class="row ms-3 pt-2 mb-2" *ngFor="let review of reviews">
+      <p>
+        <b>{{ review.author.name }}</b>
+      </p>
+
+      <p class="starability-result" [attr.data-rating]="review.rating">
+        Rated: {{ review.rating }} stars
+      </p>
+      <!-- <h4>{{ review.author }}</h4> -->
+      <p class="d-inline">
+        <!-- {{ review.author }} -  -->
+        {{ review.body }}
+      </p>
+
+      <button
+        *ngIf="review.author._id === userId"
+        class="btn btn-danger w-25"
+        (click)="deleteReview(review._id)"
+      >
+        Delete Review
+      </button>
+    </div>
+  </div>
+</div>

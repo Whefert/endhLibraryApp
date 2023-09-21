@@ -1,0 +1,26 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-3 d-sm-none d-md-inline mb-3">
+      <app-filter></app-filter>
+    </div>
+    <div class="col">
+      <app-book-search></app-book-search>
+
+      <button
+        routerLink="/book/new"
+        class="btn btn-success d-inline"
+        *ngIf="isAuthenticated && isAuthorised"
+      >
+        Add Book
+      </button>
+      <app-book-list></app-book-list>
+      <app-pagination></app-pagination>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="book-menu">
+  <a *ngFor="let book of books" routerLink="/book/{{ book.id }}">{{
+    book.name
+  }}</a>
+</div> -->

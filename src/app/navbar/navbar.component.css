@@ -1,0 +1,17 @@
+.navbar-brand img {
+  height: 70px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+nav {
+  background-color: rgb(182, 85, 182);
+  color: white;
+}
+
+.donate a:hover {
+  color: white;
+}

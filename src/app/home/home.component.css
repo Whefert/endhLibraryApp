@@ -1,0 +1,34 @@
+.bg-image {
+  background-image: url("../../assets/child_on_floor.jpg");
+  height: 300px;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  background-blend-mode: multiply;
+}
+
+.feature-img {
+  flex-shrink: 0.9;
+  flex-basis: 100;
+  min-width: 70%;
+  min-height: 100%;
+}
+p {
+  font-size: 1.2rem;
+}
+
+.round-div {
+  background-color: #efbf91;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+}
+
+.badge {
+  font-size: 1rem;
+}

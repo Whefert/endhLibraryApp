@@ -1,0 +1,80 @@
+<div class="container mt-4">
+  <div *ngIf="book">
+    <div class="row">
+      <h2 class="display-5">{{ book.name }}</h2>
+      <p>
+        <strong>By {{ book.author }}</strong>
+      </p>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="card">
+          <img src="{{ book.image.url }}" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">Description</h5>
+            <p class="card-text">
+              {{ book.description }}
+            </p>
+            <p>Availability: {{ book.availability }}</p>
+            <a class="btn btn-primary me-2" (click)="reserveBook()"
+              >Reserve Book</a
+            >
+            <div *ngIf="isAuthenticated && isAuthorised" class="d-inline">
+              <a
+                *ngIf="isAuthenticated"
+                routerLink="/book/{{ book._id }}/edit"
+                class="me-2"
+                ><button class="btn btn-warning">Edit Book</button></a
+              >
+              <a routerLink="/dashboard"
+                ><button class="btn btn-danger" (click)="delete()">
+                  Delete Book
+                </button></a
+              >
+            </div>
+          </div>
+        </div>
+        <div *ngIf="editMode">
+          <hr />
+          <label for="book-name">book name: </label>
+          <input id="book-name" [(ngModel)]="book.name" />
+          <label for="book-author">book author: </label>
+          <input id="book-author" [(ngModel)]="book.author" />
+          <label for="book-description">Book Description: </label>
+          <textarea
+            name=""
+            id="book-description"
+            cols="20"
+            rows="5"
+            [(ngModel)]="book.author"
+          ></textarea>
+        </div>
+        <button
+          type="button"
+          class="btn btn-secondary mt-2 ms-3"
+          (click)="goBack()"
+        >
+          go back
+        </button>
+        <app-reservation
+          *ngIf="isAuthenticated && isAuthorised"
+          [userId]="userId"
+          [bookId]="id"
+          class="mt-3"
+        >
+        </app-reservation>
+      </div>
+      <div class="col-lg-6">
+        <!--
+        <app-reviews
+          [isAuthenticated]="isAuthenticated"
+          [userId]="userId"
+          [bookId]="id"
+        ></app-reviews> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TODO: Read this snippet: && book.addedBy === userId -->

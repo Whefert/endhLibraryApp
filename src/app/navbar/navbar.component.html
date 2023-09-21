@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/home"
+      ><img src="assets/EnDH-logo.png" alt=""
+    /></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/dashboard">All Books</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="!isAuthenticated" routerLink="auth/signup"
+            >Sign Up</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="!isAuthenticated" routerLink="auth/login"
+            >Login</a
+          >
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" *ngIf="isAuthenticated" routerLink="/login"
+            >Hi {{ username }}</a
+          >
+        </li> -->
+        <li class="nav-item" *ngIf="isAuthenticated">
+          <p class="d-inline me-3">Hi {{ username }}</p>
+          <button (click)="onLogOut()" class="btn btn-dark">Logout</button>
+        </li>
+        <li class="nav-item">
+          <a
+            class="donate btn btn-outline-light ms-lg-2 mt-2 mb-2 mt-lg-0"
+            href="https://endh-foundation.org/donate/"
+          >
+            Donate
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

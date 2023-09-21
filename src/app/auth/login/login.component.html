@@ -1,0 +1,68 @@
+<div class="container-fluid min-vh-100">
+  <div class="container">
+    <div class="d-flex justify-content-center mt-5" *ngIf="isLoading">
+      <div class="spinner-border" role="status">
+        <!-- <span class="sr-only">Loading...</span> -->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6 col-xl-3 pt-5">
+        <div class="form border border-primary rounded-3 p-4">
+          <h1>Login</h1>
+          <p>New user? <a routerLink="/auth/signup">Create an account</a></p>
+          <form
+            class=""
+            *ngIf="!isLoading"
+            (submit)="onLogin(loginForm)"
+            #loginForm="ngForm"
+            class=""
+          >
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label"
+                >Email address</label
+              >
+              <input
+                type="email"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                #emailInput
+                name="email"
+                ngModel
+                required
+                email
+              />
+              <div id="emailHelp" class="form-text">
+                We'll never share your email with anyone else.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label"
+                >Password</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                id="exampleInputPassword1"
+                name="password"
+                ngModel
+                #passwordInput="ngModel"
+                required
+              />
+            </div>
+            <button *ngIf="!isLoading" type="submit" class="btn btn-primary">
+              Login
+            </button>
+            <div
+              *ngIf="isLoading"
+              class="spinner-border text-primary"
+              role="status"
+            >
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

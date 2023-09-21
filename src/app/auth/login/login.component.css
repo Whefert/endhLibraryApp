@@ -1,0 +1,9 @@
+.container-fluid {
+  background-image: url("../../../assets/girl_with_books.jpeg");
+  background-position: top;
+  background-size: cover;
+}
+
+.form {
+  background-color: white;
+}
